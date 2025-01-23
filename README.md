@@ -9,10 +9,12 @@ Currently, two official plugins are available:
 
 ## TO-DO
 
+- ✅dependencias actualizadas 23/1/24
 - ✅better underStanding
 - ✅components
 - ✅JSX
+- ✅rutas agregadas con lazy load,and more
 - ✅Props
 - ✅better loader, [source](https://www.freecodecamp.org/news/react-suspense/)
 
-- ❌ 
+- ❌ contextos,estados globales faltan

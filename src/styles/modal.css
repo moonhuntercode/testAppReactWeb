@@ -1,4 +1,4 @@
-@import url('./globals.css');
+@import url("./globals.css");
 /* 
 .modalContainer{
     position: absolute;
@@ -55,6 +55,10 @@ button {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  &:focus {
+    background: violet;
+    border: solid 2px black;
+  }
 }
 
 button:hover {
