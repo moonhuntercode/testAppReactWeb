@@ -1,0 +1,10 @@
+.loader {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+
+        width: 500px;
+    }
+}
