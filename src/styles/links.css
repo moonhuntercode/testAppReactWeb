@@ -1,0 +1,84 @@
+/* styles/links.css */
+
+/* Contenedor de la lista de enlaces */
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Estilo para cada elemento de enlace */
+.link-item {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.link-item:hover {
+  background-color: #e9ecef;
+}
+
+/* Estilos para los enlaces */
+.link-item__anchor {
+  text-decoration: none;
+  color: #337ab7;
+  display: flex;
+  align-items: center;
+}
+
+.link-item__anchor:hover {
+  color: #23527c;
+}
+
+/* Estilo de la imagen dentro del enlace */
+.link-item__image {
+  width: 24px; /* Ajuste de tamaño para imágenes */
+  height: 24px;
+  margin-right: 12px; /* Más espacio entre la imagen y el texto */
+  border-radius: 50%; /* Bordes redondeados */
+  object-fit: cover;
+}
+
+/* Nombre del enlace */
+.link-item__name {
+  font-weight: 500;
+  font-size: 16px;
+  color: #333;
+  margin-left: 8px;
+}
+
+/* Estilos de la carga de imágenes */
+.loading-container {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e9ecef;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar div {
+  height: 100%;
+  background-color: #337ab7;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: red;
+  font-size: 18px;
+  margin-top: 20px;
+}

@@ -1,0 +1,28 @@
+/* src/css/styles.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  
+  border-bottom: 2px solid #ddd;
+  
+  
+}
+
+
+
+.navbar .navbar-links {
+  display: flex;
+  gap: 10px;
+}
+
+
+
+.navbar .theme-toggle-btn {
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+
+}

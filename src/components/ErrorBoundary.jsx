@@ -1,6 +1,7 @@
 // src/components/ErrorBoundary.jsx
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useLoadingContext } from "../context/LoadingContext"; // Asegúrate de la ruta correcta
 
 // Simulación de un servicio externo para logs (por ejemplo, Sentry)
 const logErrorToService = (error, errorInfo) => {
@@ -14,22 +15,14 @@ const ErrorBoundary = ({ children }) => {
   const [hasError, setHasError] = useState(false);
   // Estado para almacenar información sobre el error, como el stack trace
   const [errorInfo, setErrorInfo] = useState(null);
+  const { setError } = useLoadingContext(); // Accedemos al contexto para reportar el error globalmente
 
-  // Usamos el hook useEffect para manejar los cambios en el estado de error
-  useEffect(() => {
-    if (hasError && errorInfo) {
-      // Si hay un error, logueamos el error a un servicio de logs
-      logErrorToService(errorInfo.error, errorInfo.info);
-      console.error("Error capturado por ErrorBoundary:", errorInfo);
-    }
-  }, [hasError, errorInfo]); // Se ejecuta cuando cambia el estado de `hasError` o `errorInfo`
-
-  // Captura de errores simulada: establecemos el estado de `hasError` y `errorInfo`
-  // Si tienes una función para capturar errores en los hijos, esta es donde iría.
-  // En lugar de componentDidCatch, simplemente establecemos `hasError` manualmente
+  // Captura de errores: Cuando ocurre un error en un componente hijo, se llama esta función
   const handleError = (error, errorInfo) => {
     setHasError(true); // Cambia el estado a 'true' si ocurre un error
     setErrorInfo({ error, info: errorInfo }); // Almacena la información del error
+    logErrorToService(error, errorInfo); // Enviamos el error al servicio de logs
+    setError("Algo salió mal con la carga de los enlaces."); // Actualiza el contexto con el error
   };
 
   // Si hay un error, mostramos un mensaje amigable para el usuario
@@ -58,12 +51,16 @@ const ErrorBoundary = ({ children }) => {
     );
   }
 
-  // Si no hay error, renderizamos los hijos normalmente
-  return children;
+  // Intentamos renderizar los hijos, si ocurre un error, lo atrapamos
+  try {
+    return children;
+  } catch (error) {
+    handleError(error, error.info);
+    return null; // Si hubo un error, no renderizamos nada
+  }
 };
 
 // Validamos que 'children' es una propiedad requerida usando PropTypes
-// Esto asegura que 'children' siempre será un nodo válido
 ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired, // Asegura que 'children' sea un nodo válido
 };
