@@ -18,3 +18,6 @@ Currently, two official plugins are available:
 - ✅better loader, [source](https://www.freecodecamp.org/news/react-suspense/)
 
 - ❌ contextos,estados globales faltan
+- ❌ renderización exacta o controlada incompleta
+- ❌ loader no preciso
+
